@@ -2,11 +2,13 @@ import React from 'react'
 
 export default function About() {
   return (
-    <>
-  <p className='bg-green-500'>
-  At the heart of our project lies a vision crafted by a team of innovative minds: Vashisht Kumar, the strategic thinker known for his groundbreaking approaches to sustainable development; Varin Bali, the creative genius whose designs reimagine living spaces; Vivekanand Rohtsavi, the analytical powerhouse with a knack for market trends; and Vansh Rana, the operational wizard who turns visions into reality. Together, we envision a real estate ecosystem that transcends traditional boundaries, creating not just homes, but sustainable communities where every detail reflects our commitment to excellence, innovation, and the betterment of society. Our journey is fueled by a desire to redefine the real estate landscape, ensuring every project we undertake is a step towards a more sustainable, inclusive, and innovative future.
-</p>
-
-</>
+    <div className='py-20 px-4 max-w-6xl mx-auto'>
+      <h1 className='text-3xl font-bold mb-4 text-slate-800'>About UrbaNest</h1>
+      <p className='mb-4 text-slate-700'>UrbaNest is a leading real estate agency that specializes in helping clients buy, sell, and rent properties in the most desirable neighborhoods. Our team of experienced agents is dedicated to providing exceptional service and making the buying and selling process as smooth as possible.</p>
+      <p className='mb-4 text-slate-700'>
+      Our mission is to help our clients achieve their real estate goals by providing expert advice, personalized service, and a deep understanding of the local market. Whether you are looking to buy, sell, or rent a property, we are here to help you every step of the way.
+      </p>
+      <p className='mb-4 text-slate-700'>Our team of agents has a wealth of experience and knowledge in the real estate industry, and we are committed to providing the highest level of service to our clients. We believe that buying or selling a property should be an exciting and rewarding experience, and we are dedicated to making that a reality for each and every one of our clients.</p>
+    </div>
   )
 }
