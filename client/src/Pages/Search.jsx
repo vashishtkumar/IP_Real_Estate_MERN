@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ListingItem from '../Components/ListingItem';
 
 export default function Search() {
   const navigate = useNavigate();
@@ -12,11 +13,9 @@ export default function Search() {
     sort: 'created_at',
     order: 'desc',
   });
-
   const [loading, setLoading] = useState(false);
   const [listings, setListings] = useState([]);
   console.log(listings);
-
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
     const searchTermFromUrl = urlParams.get('searchTerm');
@@ -26,7 +25,6 @@ export default function Search() {
     const offerFromUrl = urlParams.get('offer');
     const sortFromUrl = urlParams.get('sort');
     const orderFromUrl = urlParams.get('order');
-
     if (
       searchTermFromUrl ||
       typeFromUrl ||
@@ -46,7 +44,6 @@ export default function Search() {
         order: orderFromUrl || 'desc',
       });
     }
-
     const fetchListings = async () => {
       setLoading(true);
       const searchQuery = urlParams.toString();
@@ -55,10 +52,8 @@ export default function Search() {
       setListings(data);
       setLoading(false);
     };
-
     fetchListings();
   }, [location.search]);
-
   const handleChange = (e) => {
     if (
       e.target.id === 'all' ||
@@ -67,11 +62,9 @@ export default function Search() {
     ) {
       setSidebardata({ ...sidebardata, type: e.target.id });
     }
-
     if (e.target.id === 'searchTerm') {
       setSidebardata({ ...sidebardata, searchTerm: e.target.value });
     }
-
     if (
       e.target.id === 'parking' ||
       e.target.id === 'furnished' ||
@@ -83,16 +76,12 @@ export default function Search() {
           e.target.checked || e.target.checked === 'true' ? true : false,
       });
     }
-
     if (e.target.id === 'sort_order') {
       const sort = e.target.value.split('_')[0] || 'created_at';
-
       const order = e.target.value.split('_')[1] || 'desc';
-
       setSidebardata({ ...sidebardata, sort, order });
     }
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const urlParams = new URLSearchParams();
@@ -208,10 +197,26 @@ export default function Search() {
           </button>
         </form>
       </div>
-      <div className=''>
+      <div className='flex-1'>
         <h1 className='text-3xl font-semibold border-b p-3 text-slate-700 mt-5'>
           Listing results:
         </h1>
+        <div className='p-7 flex flex-wrap gap-4'>
+          {!loading && listings.length === 0 && (
+            <p className='text-xl text-slate-700'>No listing found!</p>
+          )}
+          {loading && (
+            <p className='text-xl text-slate-700 text-center w-full'>
+              Loading...
+            </p>
+          )}
+
+          {!loading &&
+            listings &&
+            listings.map((listing) => (
+              <ListingItem key={listing._id} listing={listing} />
+            ))}
+        </div>
       </div>
     </div>
   );
