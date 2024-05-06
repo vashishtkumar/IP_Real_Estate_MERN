@@ -1,0 +1,6 @@
+#divmain{
+    background-image: url('../assets/home.jpeg');
+    background-size: cover;
+    background-position: center;
+    height: 100%; /* Set the height you need */
+  }

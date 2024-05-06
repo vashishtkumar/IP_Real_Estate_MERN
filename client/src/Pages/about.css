@@ -1,0 +1,10 @@
+#about {
+    background-image: url('../assets/about.jpeg');
+    background-size: cover; /* Ensures the background covers the entire element */
+    background-position: center; /* Centers the background image */
+    min-height: 100vh; /* Minimum height of 100% of the viewport height */
+    width: 100%; /* Ensures the width extends to 100% of the container/viewport */
+    height: 100%; /* You can also set this to ensure full height coverage */
+    position: relative; /* Ensures that the div is positioned correctly */
+  }
+  
